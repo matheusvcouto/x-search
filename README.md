@@ -1,5 +1,7 @@
 # X Search
 
+Projeto Teste.
+
 Lista de conteudos que contribuiram para a realização do projeto
 - [Using Google Chrome extension APIs in TypeScript (stackoverflow)](https://stackoverflow.com/questions/28844406/using-google-chrome-extension-apis-in-typescript)
 - [chrome.omnibox (developer.chrome.com)](https://developer.chrome.com/docs/extensions/reference/api/omnibox?hl=pt-br)

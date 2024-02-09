@@ -2,6 +2,7 @@
 // Tipagem:
 // https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/types/chrome/index.d.ts
 // https://stackoverflow.com/questions/28844406/using-google-chrome-extension-apis-in-typescript
+import 'dotenv'
 
 chrome.omnibox.onInputEntered.addListener( async (text) => {
   let query = text.split(' ')
@@ -12,6 +13,7 @@ chrome.omnibox.onInputEntered.addListener( async (text) => {
 
   switch (engine) {
     case 'gh':
+      const user = 'matheusvcouto'
       if (query[0] === '-u' || query[0] === 'user') {
         const user = query[1]
         searchUrl = `https://github.com/search?q=${user}&type=Users`
@@ -25,6 +27,14 @@ chrome.omnibox.onInputEntered.addListener( async (text) => {
           searchUrl = `https://github.com/settings`;
         }
         break;     
+      }
+
+      if (query[0] === 'repo') {
+        if (query[1] === 'create') {
+          searchUrl = 'https://github.com/new'
+        } else {
+          searchUrl = `https://github.com/${user}?tab=repositories`
+        }
       }
 
       searchUrl = `https://github.com/search?q=${searchTerm}`
@@ -59,7 +69,7 @@ chrome.omnibox.onInputEntered.addListener( async (text) => {
       if (query[query.length - 2] === 'for') {
         const customLang = query.pop() // remove o ultimo
         query.pop(); // Remove o 'for'
-        searchTerm = query.join(' '); // Junta o restante para formar o searchTerm
+        searchTerm = query.join(' '); // Junta o restante
         searchUrl = `https://www.deepl.com/translator#pt/${customLang}/${encodeURIComponent(searchTerm)}`
       } else {
         searchUrl = `https://www.deepl.com/translator#en/pt/${encodeURIComponent(searchTerm)}`
