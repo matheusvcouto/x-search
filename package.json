@@ -1,0 +1,12 @@
+{
+  "scripts": {
+    "build": "tsc",
+    "test": "npx tsx test.ts"
+  },
+  "devDependencies": {
+    "@types/chrome": "^0.0.260",
+    "tsup": "^8.0.1",
+    "tsx": "^4.7.0",
+    "typescript": "^5.3.3"
+  }
+}
